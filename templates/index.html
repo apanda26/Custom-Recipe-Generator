@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+    <style>
+        body {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Custom Recipe Generator</h1>
+    <form method="POST">
+        <label for="dietary_restrictions">Dietary Restrictions:</label>
+        <input type="text" id="dietary_restrictions" name="dietary_restrictions" placeholder="e.g., vegetarian, vegan, none" required>
+
+        <label for="favorite_ingredients">Favorite Ingredients (comma separated):</label>
+        <input type="text" id="favorite_ingredients" name="favorite_ingredients" placeholder="e.g., chicken, mushroom, spinach" required>
+
+        <label for="experience_level">Cooking Experience Level:</label>
+        <select id="experience_level" name="experience_level" required>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="expert">Expert</option>
+        </select>
+
+        <label for="maximum_spice_level">Maximum Spice Level (1-10):</label>
+        <input type="number" id="maximum_spice_level" name="maximum_spice_level" min="1" max="10" required>
+
+        <label for="available_spices">Available Spices (comma separated):</label>
+        <input type="text" id="available_spices" name="available_spices" placeholder="e.g., salt, pepper, cumin" required>
+
+        <button type="submit">Generate Recipe</button>
+    </form>
+
+    {% if recipe %}
+    <h2>Generated Recipe:</h2>
+    <textarea readonly>{{ recipe }}</textarea>
+    {% endif %}
+</body>
+</html>
